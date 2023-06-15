@@ -1,0 +1,14 @@
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\bin\Debug\net7.0\BusinessLogic.deps.json
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\bin\Debug\net7.0\BusinessLogic.runtimeconfig.json
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\bin\Debug\net7.0\BusinessLogic.dll
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\bin\Debug\net7.0\BusinessLogic.pdb
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\BusinessLogic.csproj.AssemblyReference.cache
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\BusinessLogic.AssemblyInfoInputs.cache
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\BusinessLogic.AssemblyInfo.cs
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\BusinessLogic.dll
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\refint\BusinessLogic.dll
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\BusinessLogic.pdb
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\BusinessLogic.genruntimeconfig.cache
+C:\Users\José Faus\RiderProjects\trabalhopratico\es2\BusinessLogic\obj\Debug\net7.0\ref\BusinessLogic.dll
