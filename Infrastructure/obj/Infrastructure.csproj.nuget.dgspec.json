@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\José Faus\\RiderProjects\\trabalhopratico\\es2\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\José Faus\\Desktop\\ES2update\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\José Faus\\RiderProjects\\trabalhopratico\\es2\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\José Faus\\Desktop\\ES2update\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\José Faus\\RiderProjects\\trabalhopratico\\es2\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\José Faus\\Desktop\\ES2update\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\José Faus\\RiderProjects\\trabalhopratico\\es2\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\José Faus\\Desktop\\ES2update\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\José Faus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\José Faus\\RiderProjects\\trabalhopratico\\es2\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\José Faus\\Desktop\\ES2update\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\José Faus\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,20 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Database": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.7, )"
+            },
+            "Microsoft.AspNetCore.Mvc.RazorPages": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

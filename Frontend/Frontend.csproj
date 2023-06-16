@@ -7,13 +7,22 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Database" Version="2.5.0" />
+        <PackageReference Include="Gradient" Version="0.15.7.2" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.3" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.3" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
+
     </ItemGroup>
 
     <ItemGroup>
       <Content Remove="Pages\sair.razor" />
       <Content Remove="Pages\definicoes.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
     </ItemGroup>
 
 </Project>

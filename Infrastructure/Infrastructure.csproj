@@ -26,4 +26,10 @@
       <None Remove="docker\images\pg\migrations\003-create-books-table.sql" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Database" Version="2.5.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.7" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
+    </ItemGroup>
+
 </Project>
