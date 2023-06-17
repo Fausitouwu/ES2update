@@ -1,0 +1,36 @@
+﻿@page "/dadosconta"
+<h3>Minha Conta</h3>
+
+<div class="form-group">
+    <label for="nome">Nome:</label>
+    <input class="form-control" type="text" id="nome" @bind="nome" />
+</div>
+
+<div class="form-group">
+    <label for="email">E-mail:</label>
+    <input class="form-control" type="email" id="email" @bind="email" />
+</div>
+
+<div class="text-center">
+    <button class="btn btn-primary" @onclick="SalvarAlteracoes">Salvar Alterações</button>
+</div>
+
+@code {
+    private string nome;
+    private string email;
+
+    protected override void OnInitialized()
+    {
+    // Carregar informações pessoais do participante
+        nome = "Nome do Participante";
+        email = "exemplo@dominio.com";
+    }
+
+    private void SalvarAlteracoes()
+    {
+    // Lógica para salvar as alterações no banco de dados ou em algum serviço externo
+
+    // Exemplo de exibição de mensagem de sucesso
+        Console.WriteLine("Alterações salvas com sucesso!");
+    }
+}

@@ -1,0 +1,75 @@
+﻿@page "/MeusEventos"
+<h3>Meus Eventos</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Local</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var evento in OsMeusEventos)
+        {
+            <tr>
+                <td>@evento.Nome</td>
+                <td>@evento.Data</td>
+                <td>@evento.Local</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="(() => EditarEvento(evento.Id))">Editar</button>
+                    <button class="btn btn-danger" @onclick="(() => RemoverEvento(evento.Id))">Remover</button>
+                    <button class="btn btn-info" @onclick="(() => VerParticipantes(evento.Id))">Ver Participantes</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Evento> OsMeusEventos = new List<Evento>();
+
+    protected override void OnInitialized()
+    {
+        // Simulação de dados de eventos do organizador
+        OsMeusEventos = ObterMeusEventos();
+    }
+
+    private List<Evento> ObterMeusEventos()
+    {
+        // Lógica para obter os eventos do organizador (pode ser substituída por chamadas a API, banco de dados, etc.)
+        return new List<Evento>
+        {
+            new Evento { Id = 1, Nome = "Evento 1", Data = DateTime.Now, Local = "Local 1" },
+            new Evento { Id = 2, Nome = "Evento 2", Data = DateTime.Now.AddDays(1), Local = "Local 2" },
+            new Evento { Id = 3, Nome = "Evento 3", Data = DateTime.Now.AddDays(2), Local = "Local 3" }
+        };
+    }
+
+    private void EditarEvento(int eventoId)
+    {
+        // Lógica para redirecionar o organizador para a página de edição do evento com o eventoId
+        // Exemplo: NavigationManager.NavigateTo($"EditarEvento/{eventoId}");
+    }
+
+    private void RemoverEvento(int eventoId)
+    {
+        // Lógica para remover o evento com o eventoId
+        // Exemplo: MeusEventos.RemoveAll(e => e.Id == eventoId);
+    }
+
+    private void VerParticipantes(int eventoId)
+    {
+        // Lógica para redirecionar o organizador para a página de visualização de participantes do evento com o eventoId
+        // Exemplo: NavigationManager.NavigateTo($"ParticipantesEvento/{eventoId}");
+    }
+
+    public class Evento
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public DateTime Data { get; set; }
+        public string Local { get; set; }
+    }
+}

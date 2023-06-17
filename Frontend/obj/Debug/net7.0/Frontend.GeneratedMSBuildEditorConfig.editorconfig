@@ -20,12 +20,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Ajuda.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWp1ZGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Evento.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvLnJhem9y
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/CriarEvento.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JpYXJFdmVudG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/DadosConta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFkb3NDb250YS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/FetchData.razor]
@@ -36,12 +44,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Partir.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydGlyLnJhem9y
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Mensagens.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVuc2FnZW5zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/MeusEventos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWV1c0V2ZW50b3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/MeusRegistos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWV1c1JlZ2lzdG9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/PesquisarEventos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVzcXVpc2FyRXZlbnRvcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Relatorio.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVsYXRvcmlvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/José Faus/Desktop/ES2update/Frontend/Pages/Settings.razor]

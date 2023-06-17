@@ -1,56 +1,71 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Backend.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
+using BusinessLogic.Context;
+using BusinessLogic.Entities;
 
 namespace Backend.Controllers
-
 {
-    [Route("api/[controller]")]
+    [Route("api/Utilizadores")]
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
+        private readonly db_context _context;
 
-        public AuthController(IConfiguration configuration)
+        public AuthController(db_context context)
         {
-            _configuration = configuration;
+            _context = context;
         }
 
-        [HttpPost("token")]
-        public IActionResult GenerateToken([FromBody] AuthModel login)
+        [HttpPost("login")]
+        public async Task<IActionResult> HandleLogin(string username, string password)
         {
-            if (IsValidUser(login))
+            // Check if the username and password match the records in the database
+            var utilizador =
+                await _context.Utilizadors.FirstOrDefaultAsync(u => u.Nome == username && u.Senha == password);
+
+            if (utilizador != null)
             {
-                var token = GenerateJwtToken(login.Username);
-                return Ok(new { Token = token });
+                // Authentication successful
+                return Ok("Login criado com Sucesso!");
             }
-
-            return Unauthorized();
-        }
-
-        private static bool IsValidUser(AuthModel login)
-        {
-            return login is { Username: "es2", Password: "es2" };
-        }
-
-        private string GenerateJwtToken(string username)
-        {
-            var claims = new[]
+            else
             {
-                new Claim(ClaimTypes.Name, username)
-            };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"]));
-            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires =
-                DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["JwtSettings:TokenExpirationTimeInMinutes"]));
-            var token = new JwtSecurityToken(_configuration["JwtSettings:Issuer"],
-                _configuration["JwtSettings:Audience"],
-                claims, expires: expires, signingCredentials: credentials
-            );
-            return new JwtSecurityTokenHandler().WriteToken(token);
+                // Authentication failed
+                return Unauthorized("Nome e Senha inválidos!");
+            }
         }
+
+        [HttpPost("criar")]
+        public async Task<IActionResult> HandleCreateUser([FromQuery] string nome, [FromQuery] string senha,
+            [FromQuery] string email)
+        {
+            var tipo_utilizador = new TipoUtilizador
+            {
+                Tipo = "Utilizador"
+            };
+
+            _context.TipoUtilizadors.Add(tipo_utilizador);
+            await _context.SaveChangesAsync();
+
+            var utilizador = new Utilizador
+            {
+                Nome = nome,
+                Senha = senha,
+                Email = email,
+                Idtipouser = tipo_utilizador.Id
+            };
+
+            _context.Utilizadors.Add(utilizador);
+            await _context.SaveChangesAsync();
+
+            return Ok("Utilizador criado com Sucesso!");
+        }
+
     }
 }

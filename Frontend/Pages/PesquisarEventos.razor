@@ -1,0 +1,48 @@
+﻿@page "/PesquisarEventos"
+<h3>Pesquisar Eventos</h3>
+
+<div>
+    <label for="txtNome">Nome do Evento:</label>
+    <input id="txtNome" type="text" @bind="@nomeEvento" />
+    <button class="btn btn-primary" @onclick="Pesquisar_Eventos">Pesquisar</button>
+</div>
+
+@if (eventosEncontrados != null && eventosEncontrados.Count > 0)
+{
+    <h4>Eventos Encontrados:</h4>
+    <ul>
+        @foreach (var evento in eventosEncontrados)
+        {
+            <li>@evento.Nome - @evento.Data.ToShortDateString()</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Nenhum evento encontrado.</p>
+}
+
+@code {
+    private string nomeEvento;
+    private List<Evento> eventosEncontrados;
+
+    public class Evento
+    {
+        public string Nome { get; set; }
+        public DateTime Data { get; set; }
+    }
+
+    private void Pesquisar_Eventos()
+    {
+    // Lógica de pesquisa de eventos com base no nome do evento
+    // Substitua esta lógica com sua implementação real
+
+    // Exemplo: Pesquisar eventos em uma lista simulada de eventos
+        eventosEncontrados = new List<Evento>
+        {
+            new Evento { Nome = "Evento 1", Data = new DateTime(2023, 6, 20) },
+            new Evento { Nome = "Evento 2", Data = new DateTime(2023, 6, 25) },
+            new Evento { Nome = "Evento 3", Data = new DateTime(2023, 7, 1) }
+        }.Where(e => e.Nome.Contains(nomeEvento)).ToList();
+    }
+}

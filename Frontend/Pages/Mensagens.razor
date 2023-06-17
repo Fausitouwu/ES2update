@@ -1,0 +1,33 @@
+﻿@page "/Mensagens"
+<h3>Mensagens</h3>
+
+<div>
+    <h4>Caixa de Entrada</h4>
+    <ul>
+        @foreach (var mensagem in mensagens)
+        {
+            <li>@mensagem.Remetente: @mensagem.Conteudo</li>
+        }
+    </ul>
+</div>
+
+@code {
+    private List<Mensagem> mensagens;
+
+    public class Mensagem
+    {
+        public string Remetente { get; set; }
+        public string Conteudo { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+    // Simulação de mensagens
+        mensagens = new List<Mensagem>
+        {
+            new Mensagem { Remetente = "Organizador A", Conteudo = "Atualização importante sobre o evento X!" },
+            new Mensagem { Remetente = "Organizador B", Conteudo = "Lembrete: o evento Y começa amanhã!" },
+            new Mensagem { Remetente = "Organizador C", Conteudo = "Parabéns! Você foi selecionado para uma atividade especial no evento Z." }
+        };
+    }
+}

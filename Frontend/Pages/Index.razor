@@ -1,58 +1,136 @@
 ﻿@page "/"
-@using Microsoft.AspNetCore.Components.Forms
 
-<PageTitle>Login</PageTitle>
+<PageTitle>Home</PageTitle>
 
-<style>
-    .background-texture {
-        background-color: #e9e9e9; /* Defina a cor de fundo como cinza */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-    }
+<div class="home-container">
+    <h1 class="title">Bem-vindo à Gestão de Eventos e Participantes</h1>
 
-    .login-form {
-        max-width: 300px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #335c33; /* Defina a cor de fundo como verde escuro */
-        color: #ffffff; /* Defina a cor do texto como branco */
-    }
+    <p class="description">Este é um sistema de gestão de eventos e participantes, permitindo que os organizadores criem e gerenciem eventos, enquanto os participantes se registram e gerenciam suas inscrições.</p>
 
-    .login-form h1 {
-        font-size: 20px;
-    }
-</style>
+    <div class="event-list">
+        <h2 class="subtitle">Próximos Eventos</h2>
 
-<div class="background-texture">
-    <div class="login-form">
-        <h1 class="text-center">GESTÃO DE EVENTOS E PARTICIPANTES API</h1>
-
-        <h1 class="text-center mt-4">Login</h1>
-
-        <div class="form-group mt-4">
-            <label for="username">Username</label>
-            <input id="username" class="form-control" @bind="username" />
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input id="password" class="form-control" type="password" @bind="password" />
-        </div>
-
-        <div class="text-center mt-4">
-            <button class="btn btn-primary" @onclick="Login">Log in</button>
-        </div>
+        @if (Eventos != null && Eventos.Any())
+        {
+            @foreach (var evento in Eventos)
+            {
+                <div class="event-item">
+                    <h3 class="event-title">@evento.Nome</h3>
+                    <p class="event-details"><strong>Data:</strong> @evento.Data.ToString("dd/MM/yyyy")</p>
+                    <p class="event-details"><strong>Local:</strong> @evento.Local</p>
+                    <p class="event-description">@evento.Descricao</p>
+                    <p class="event-details"><strong>Capacidade Máxima:</strong> @evento.CapacidadeMaxima</p>
+                    <p class="event-details"><strong>Preço do Ingresso:</strong> @evento.PrecoIngresso</p>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Nenhum evento próximo encontrado.</p>
+        }
     </div>
 </div>
 
-@code {
-    private string username;
-    private string password;
+<style>
+    .home-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        text-align: center;
+    }
 
-    private void Login()
+    .title {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .description {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    .subtitle {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .event-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .event-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .event-details {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .event-description {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 10px;
+    }
+</style>
+
+
+@code {
+    private List<Evento> Eventos { get; set; }
+
+    protected override void OnInitialized()
     {
-    // Perform login logic here
+        // Simulação de dados de eventos
+        Eventos = new List<Evento>
+        {
+            new Evento
+            {
+                Nome = "Conferência de Tecnologia",
+                Data = DateTime.Now.AddDays(7),
+                Local = "Centro de Convenções",
+                Descricao = "Uma conferência abrangendo as últimas tendências e avanços em tecnologia.",
+                CapacidadeMaxima = 500,
+                PrecoIngresso = 50.00
+            },
+            new Evento
+            {
+                Nome = "Workshop de Design Gráfico",
+                Data = DateTime.Now.AddDays(14),
+                Local = "Estúdio de Design",
+                Descricao = "Um workshop prático para aprender habilidades avançadas de design gráfico.",
+                CapacidadeMaxima = 50,
+                PrecoIngresso = 20.00
+            },
+            new Evento
+            {
+                Nome = "Seminário de Negócios",
+                Data = DateTime.Now.AddDays(14),
+                Local = "Auditório Principal",
+                Descricao = "O Seminário de Negócios é um evento imperdível para profissionais e empreendedores que desejam expandir seus conhecimentos e aprimorar suas habilidades no mundo dos negócios.",
+                CapacidadeMaxima = 50,
+                PrecoIngresso = 20.00
+            }
+            // Adicione mais eventos aqui
+        };
+    }
+
+    public class Evento
+    {
+        public string Nome { get; set; }
+        public DateTime Data { get; set; }
+        public string Local { get; set; }
+        public string Descricao { get; set; }
+        public int CapacidadeMaxima { get; set; }
+        public double PrecoIngresso { get; set; }
     }
 }

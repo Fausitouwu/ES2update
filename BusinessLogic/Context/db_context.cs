@@ -8,10 +8,16 @@ namespace BusinessLogic.Context;
 public partial class db_context : DbContext
 {
 
+    public db_context()
+    {
+        
+    }
+    
     public db_context(DbContextOptions<db_context> options)
         : base(options)
     {
     }
+    
 
     public virtual DbSet<Atividade> Atividades { get; set; }
 
@@ -183,10 +189,13 @@ public partial class db_context : DbContext
             entity.Property(e => e.Tipoingresso)
                 .HasMaxLength(255)
                 .HasColumnName("tipoingresso");
-
-            entity.HasOne(d => d.Evento).WithMany(p => p.Tickets)
-                .HasForeignKey(d => d.EventoId)
+            
+            modelBuilder.Entity<Ticket>()
+                .HasOne(t => t.IdEventoNavigation)
+                .WithMany(p => p.Tickets)
+                .HasForeignKey(t => t.EventoId)
                 .HasConstraintName("ticket_evento_id_fkey");
+
         });
 
         modelBuilder.Entity<TipoUtilizador>(entity =>

@@ -1,0 +1,74 @@
+﻿@page "/Logout"
+@inject NavigationManager Navigation
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .logout-button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #dc3545;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .logout-button:hover {
+        background-color: #c82333;
+    }
+
+    .logout-button:focus {
+        outline: none;
+    }
+
+    .logout-button:active {
+        background-color: #bd2130;
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+</style>
+
+<div class="container">
+
+
+    <h3>Logout</h3>
+
+    <p>Clique no botão abaixo para fazer logout:</p>
+
+    <button class="logout-button" @onclick="Sair">Sair</button>
+</div>
+
+@code {
+    private void Sair()
+    {
+    // Lógica de logout aqui, como limpar sessão ou cookies
+        Navigation.NavigateTo("/Login", forceLoad: true);
+    }
+}

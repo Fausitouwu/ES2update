@@ -1,0 +1,92 @@
+﻿@page "/Relatorio"
+<h3>Relatório Geral</h3>
+
+<div class="report-section">
+    <h4>Número de Eventos por Categoria</h4>
+    <ul>
+        @foreach (var categoria in categorias)
+        {
+            <li>@categoria.Nome: @categoria.NumeroEventos</li>
+        }
+    </ul>
+</div>
+
+<div class="report-section">
+    <h4>Eventos Mais Populares</h4>
+    <ul>
+        @foreach (var evento in eventosPopulares)
+        {
+            <li>@evento.Nome (Participantes: @evento.NumeroParticipantes)</li>
+        }
+    </ul>
+</div>
+
+<div class="report-summary">
+    <p>Total de Participantes: @numeroTotalParticipantes</p>
+</div>
+
+<style>
+    .report-section {
+        background-color: #f2f2f2;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .report-section h4 {
+        color: #333;
+        font-size: 20px;
+    }
+
+    .report-section ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .report-section li {
+        margin-bottom: 5px;
+    }
+
+    .report-summary {
+        background-color: #e8e8e8;
+        padding: 10px;
+    }
+</style>
+
+
+@code {
+    private List<CategoriaEvento> categorias;
+    private List<EventoPopular> eventosPopulares;
+    private int numeroTotalParticipantes;
+
+    public class CategoriaEvento
+    {
+        public string Nome { get; set; }
+        public int NumeroEventos { get; set; }
+    }
+
+    public class EventoPopular
+    {
+        public string Nome { get; set; }
+        public int NumeroParticipantes { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+    // Simulação de dados estatísticos
+        categorias = new List<CategoriaEvento>
+        {
+            new CategoriaEvento { Nome = "Esportes", NumeroEventos = 10 },
+            new CategoriaEvento { Nome = "Arte e Cultura", NumeroEventos = 5 },
+            new CategoriaEvento { Nome = "Negócios", NumeroEventos = 8 }
+        };
+
+        eventosPopulares = new List<EventoPopular>
+        {
+            new EventoPopular { Nome = "Evento A", NumeroParticipantes = 50 },
+            new EventoPopular { Nome = "Evento B", NumeroParticipantes = 40 },
+            new EventoPopular { Nome = "Evento C", NumeroParticipantes = 60 }
+        };
+
+        numeroTotalParticipantes = 150;
+    }
+}

@@ -1,0 +1,33 @@
+﻿@page "/MeusRegistos"
+<h3>Registos</h3>
+
+<div>
+    <h4>Registos do Utilizador:</h4>
+    <ul>
+        @foreach (var registo in registos)
+        {
+            <li>@registo.NomeEvento - @registo.DataRegisto.ToShortDateString()</li>
+        }
+    </ul>
+</div>
+
+@code {
+    private List<Registo> registos;
+
+    public class Registo
+    {
+        public string NomeEvento { get; set; }
+        public DateTime DataRegisto { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+    // Simulação de dados de registos do utilizador
+        registos = new List<Registo>
+        {
+            new Registo { NomeEvento = "Evento 1", DataRegisto = new DateTime(2023, 6, 20) },
+            new Registo { NomeEvento = "Evento 2", DataRegisto = new DateTime(2023, 6, 25) },
+            new Registo { NomeEvento = "Evento 3", DataRegisto = new DateTime(2023, 7, 1) }
+        };
+    }
+}

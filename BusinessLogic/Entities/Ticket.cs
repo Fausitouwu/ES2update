@@ -16,5 +16,5 @@ public partial class Ticket
     public int? EventoId { get; set; }
     
     public virtual Evento? IdEventoNavigation { get; set; }
-
+    
 }

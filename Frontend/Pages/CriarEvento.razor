@@ -1,0 +1,42 @@
+﻿@page "/CriarEvento"
+<h3>Criar Eventos</h3>
+
+<div>
+    <h4>Novo Evento</h4>
+
+    <form>
+        <div class="form-group">
+            <label for="nomeEvento">Nome do Evento:</label>
+            <input type="text" class="form-control" id="nomeEvento">
+        </div>
+        <div class="form-group">
+            <label for="dataEvento">Data:</label>
+            <input type="date" class="form-control" id="dataEvento">
+        </div>
+        <div class="form-group">
+            <label for="horaEvento">Hora:</label>
+            <input type="time" class="form-control" id="horaEvento">
+        </div>
+        <div class="form-group">
+            <label for="localEvento">Local:</label>
+            <input type="text" class="form-control" id="localEvento">
+        </div>
+        <div class="form-group">
+            <label for="descricaoEvento">Descrição:</label>
+            <textarea class="form-control" id="descricaoEvento" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="capacidadeEvento">Capacidade Máxima de Participantes:</label>
+            <input type="number" class="form-control" id="capacidadeEvento">
+        </div>
+        <div class="form-group">
+            <label for="precoIngresso">Preço do Ingresso:</label>
+            <input type="text" class="form-control" id="precoIngresso">
+        </div>
+        <button type="submit" class="btn btn-primary">Criar Evento</button>
+    </form>
+</div>
+
+@code {
+
+}
