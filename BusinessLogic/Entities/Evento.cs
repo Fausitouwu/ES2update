@@ -30,7 +30,8 @@ public partial class Evento
 
     public virtual ICollection<Relatorio> Relatorios { get; set; } = new List<Relatorio>();
 
-    public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+    //public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 
     public virtual ICollection<Categoriasevento> Categoria { get; set; } = new List<Categoriasevento>();
+    //public object CategoriaEvento { get; set; }
 }

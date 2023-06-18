@@ -1,42 +1,99 @@
 ﻿@page "/CriarEvento"
+
 <h3>Criar Eventos</h3>
 
 <div>
     <h4>Novo Evento</h4>
 
     <form>
+          <div class="form-group">
+                    <label for="nomeEvento">ID DO UTILIZADOR:</label>
+                    <input type="text" class="form-control" id="idutilizador" @bind="Idutilizador">
+                </div>
         <div class="form-group">
             <label for="nomeEvento">Nome do Evento:</label>
-            <input type="text" class="form-control" id="nomeEvento">
+            <input type="text" class="form-control" id="nomeEvento" @bind="nome">
         </div>
         <div class="form-group">
             <label for="dataEvento">Data:</label>
-            <input type="date" class="form-control" id="dataEvento">
+            <input type="date" class="form-control" id="dataEvento" @bind="data">
         </div>
         <div class="form-group">
             <label for="horaEvento">Hora:</label>
-            <input type="time" class="form-control" id="horaEvento">
+            <input type="time" class="form-control" id="horaEvento" @bind="hora">
         </div>
         <div class="form-group">
             <label for="localEvento">Local:</label>
-            <input type="text" class="form-control" id="localEvento">
+            <input type="text" class="form-control" id="localEvento" @bind="local">
         </div>
         <div class="form-group">
             <label for="descricaoEvento">Descrição:</label>
-            <textarea class="form-control" id="descricaoEvento" rows="3"></textarea>
+            <textarea class="form-control" id="descricaoEvento" rows="3" @bind="descricao"></textarea>
         </div>
         <div class="form-group">
             <label for="capacidadeEvento">Capacidade Máxima de Participantes:</label>
-            <input type="number" class="form-control" id="capacidadeEvento">
+            <input type="number" class="form-control" id="capacidadeEvento" @bind="capacidade">
         </div>
         <div class="form-group">
             <label for="precoIngresso">Preço do Ingresso:</label>
-            <input type="text" class="form-control" id="precoIngresso">
+            <input type="text" class="form-control" id="precoIngresso" @bind="preco">
         </div>
-        <button type="submit" class="btn btn-primary">Criar Evento</button>
+        <div class="form-group">
+            <label for="precoIngresso">Tipo de Ingresso:</label>
+            <input type="text" class="form-control" id="tipoIngresso" @bind="tipoingresso">
+        </div>
+        <div class="form-group">
+            <label for="precoIngresso">Quantidade:</label>
+            <input type="text" class="form-control" id="quantidade" @bind="quantidade">
+        </div>
+        <button type="submit" class="btn btn-primary" @onclick="CriarEventoAsync">Criar Evento</button>
     </form>
 </div>
 
 @code {
+    
+    private string Idutilizador { get; set; }
+    private string nome { get; set; }
+    private DateTime data { get; set; }
+    private TimeOnly hora { get; set; }
+    private string local { get; set; }
+    private string descricao { get; set; }
+    private int capacidade { get; set; }
+    private decimal preco { get; set; }
+    private string tipoingresso { get; set; }
+    private int quantidade { get; set; }
+    
+    [Inject]
+    private NavigationManager navigationManager { get; set; }
 
+    private async Task CriarEventoAsync()
+    {
+        var url = $"http://localhost:5052/api/eventos/criarevento?" +
+                  $"Idutilizador={Idutilizador}" +
+                  $"&nome={nome}" +
+                  $"&data={Uri.EscapeDataString(data.ToString("yyyy-MM-dd"))}" +
+                  $"&hora={Uri.EscapeDataString(hora.ToString("HH:mm:ss"))}" +
+                  $"&local={local}" +
+                  $"&descricao={descricao}" +
+                  $"&capacidade={capacidade}" +
+                  $"&preco={preco}" +
+                  $"&tipoingresso={tipoingresso}" +
+                  $"&quantidade={quantidade}";
+
+        using var client = new HttpClient();
+        var response = await client.PostAsync(url, null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            // Criação bem sucedida
+            var result = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("Success");
+        }
+        else
+        {
+            // Criação falhou
+            var error = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("Error");
+        }
+    }
 }

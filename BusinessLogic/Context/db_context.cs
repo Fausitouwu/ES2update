@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using BusinessLogic.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogic.Context;
 
 public partial class db_context : DbContext
 {
+    public ActionResult<IEnumerable<Categoriasevento>> Categoriasevento;
 
     public db_context()
     {
@@ -107,6 +109,7 @@ public partial class db_context : DbContext
             entity.HasOne(d => d.IdutilizadorNavigation).WithMany(p => p.Eventos)
                 .HasForeignKey(d => d.Idutilizador)
                 .HasConstraintName("eventos_idutilizador_fkey");
+               
 
             entity.HasMany(d => d.Categoria).WithMany(p => p.Eventos)
                 .UsingEntity<Dictionary<string, object>>(
@@ -190,11 +193,12 @@ public partial class db_context : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("tipoingresso");
             
-            modelBuilder.Entity<Ticket>()
+            /*modelBuilder.Entity<Ticket>()
                 .HasOne(t => t.IdEventoNavigation)
                 .WithMany(p => p.Tickets)
                 .HasForeignKey(t => t.EventoId)
                 .HasConstraintName("ticket_evento_id_fkey");
+                */
 
         });
 

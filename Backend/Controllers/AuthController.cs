@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -42,9 +43,10 @@ namespace Backend.Controllers
         }
 
         [HttpPost("criar")]
-        public async Task<IActionResult> HandleCreateUser([FromQuery] string nome, [FromQuery] string senha,
-            [FromQuery] string email)
+        public async Task<IActionResult> HandleCreateUser([FromQuery] string nome, [FromQuery] string senha, [FromQuery] string email)
+        //public async Task<IActionResult> HandleCreateUser([FromBody] Utilizador utilizador)
         {
+
             var tipo_utilizador = new TipoUtilizador
             {
                 Tipo = "Utilizador"
@@ -61,11 +63,33 @@ namespace Backend.Controllers
                 Idtipouser = tipo_utilizador.Id
             };
 
+            if (string.IsNullOrEmpty(utilizador.Email) || !IsValidEmail(utilizador.Email))
+            {
+                ModelState.AddModelError("Email", "Email inválido");
+            }
+            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.Utilizadors.Add(utilizador);
             await _context.SaveChangesAsync();
 
             return Ok("Utilizador criado com Sucesso!");
         }
-
+        
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

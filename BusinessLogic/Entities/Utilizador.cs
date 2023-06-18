@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BusinessLogic.Entities;
 
@@ -9,6 +10,7 @@ public partial class Utilizador
 
     public string? Nome { get; set; }
 
+    [EmailAddress]
     public string? Email { get; set; }
 
     public string? Senha { get; set; }
