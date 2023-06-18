@@ -46,10 +46,13 @@ namespace Backend.Controllers
         }
 
         [HttpPost("criarevento")]
-        public async Task<ActionResult<Evento>> CreateEvento(int Idutilizador,string nome, DateTime data, TimeSpan hora, string local, string descricao, int capacidade, decimal preco, string tipoingresso, int quantidade)
+        public async Task<ActionResult<Evento>> CreateEvento(int Idutilizador, string nome, DateTime data,
+            TimeSpan hora, string local, string descricao, int capacidade, decimal preco, string tipoingresso,
+            int quantidade)
         {
             // Validação dos dados do evento
-            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(local) || string.IsNullOrEmpty(descricao) || capacidade <= 0 || preco <= 0)
+            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(local) || string.IsNullOrEmpty(descricao) ||
+                capacidade <= 0 || preco <= 0)
             {
                 return BadRequest();
             }
@@ -67,27 +70,29 @@ namespace Backend.Controllers
 
             _context.Eventos.Add(evento);
             await _context.SaveChangesAsync();
-            
-                var ticket = new Ticket
-                {
-                    Tipoingresso = tipoingresso,
-                    Preco = preco,
-                    Quantidade = quantidade,
-                    EventoId = evento.Id // Atribui o ID do evento ao EventoId do ticket
-                };
-                
-                // Salvar ticket no banco de dados
-                _context.Tickets.Add(ticket);
-                await _context.SaveChangesAsync();
 
-                return CreatedAtAction(nameof(GetEvento), new { id = evento.Id }, evento);
+            var ticket = new Ticket
+            {
+                Tipoingresso = tipoingresso,
+                Preco = preco,
+                Quantidade = quantidade,
+                EventoId = evento.Id // Atribui o ID do evento ao EventoId do ticket
+            };
+
+            // Salvar ticket no banco de dados
+            _context.Tickets.Add(ticket);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetEvento), new { id = evento.Id }, evento);
 
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEvento(int id, int Idutilizador, string nome, DateTime data, TimeSpan hora, string local, string descricao, int capacidade, decimal preco)
+        public async Task<IActionResult> UpdateEvento(int id, string nome, DateTime data, TimeSpan hora, string local,
+            string descricao, int capacidade, decimal preco)
         {
-            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(local) || string.IsNullOrEmpty(descricao) || capacidade <= 0 || preco <= 0)
+            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(local) || string.IsNullOrEmpty(descricao) ||
+                capacidade <= 0 || preco <= 0)
             {
                 return BadRequest();
             }
@@ -99,7 +104,6 @@ namespace Backend.Controllers
             }
 
             // Atualizar os campos do evento com os novos valores
-            evento.Idutilizador = Idutilizador;
             evento.Nome = nome;
             evento.Data = DateOnly.FromDateTime(data);
             evento.Hora = TimeOnly.FromTimeSpan(hora);
@@ -150,7 +154,7 @@ namespace Backend.Controllers
 
             return query.ToList();
         }
-        
+
         [HttpGet("get")]
         public IEnumerable<Evento> GetMyEventos(int idutilizador, int idevento)
         {
@@ -174,7 +178,25 @@ namespace Backend.Controllers
 
             return _context.Eventos.ToList();
         }
+        [HttpGet("eventoreport")]
+        public async Task<IActionResult> GetEventoReport(int id)
+        {
+            var evento = await _context.Eventos.FirstOrDefaultAsync(e => e.Id == id);
 
-        
+            if (evento == null)
+                return NotFound();
+
+            var capacidadeTotal = evento.Capacidade ?? 0;
+            var precoTotal = evento.Preco ?? 0;
+
+            return Ok(new
+            {
+                Preco = precoTotal,
+                CapacidadeTotal = capacidadeTotal
+            });
+        }
+
+
     }
 }
+

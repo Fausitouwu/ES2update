@@ -1,0 +1,66 @@
+﻿@page "/ListarUtilizador"
+
+<h3>Utilizadores List</h3>
+
+@if (utilizadores != null && utilizadores.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var utilizador in utilizadores)
+        {
+            <tr>
+                <td>@utilizador.Id</td>
+                <td>@utilizador.Nome</td>
+                <td>@utilizador.Email</td>
+                <td>@utilizador.Idtipouser</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else if (isFetching)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <p>No utilizadores found.</p>
+}
+
+@code {
+    private List<Utilizador> utilizadores;
+    private bool isFetching;
+
+    public partial class Utilizador
+    {
+        public int Id { get; set; }
+
+        public string? Nome { get; set; }
+        
+        public string? Email { get; set; }
+
+        public int? Idtipouser { get; set; }
+        
+    }
+
+    [Inject]
+    private HttpClient httpClient { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        isFetching = true;
+
+        var url = "http://localhost:5052/api/Utilizadores";
+        utilizadores = await httpClient.GetFromJsonAsync<List<Utilizador>>(url);
+
+        isFetching = false;
+    }
+}

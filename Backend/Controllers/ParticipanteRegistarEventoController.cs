@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,7 +20,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register(Utilizador utilizador)
+        public IActionResult Register(BusinessLogic.Entities.Utilizador utilizador)
         {
             // Verifica se os dados do utilizador são válidos
             if (!ModelState.IsValid)
@@ -74,3 +74,4 @@ namespace Backend.Controllers
         }
     }
 }
+*/

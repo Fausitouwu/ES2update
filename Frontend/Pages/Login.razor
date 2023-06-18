@@ -91,11 +91,13 @@
         private string Username { get; set; }
         private string Password { get; set; }
     
+    
     [Inject]
     private NavigationManager navigationManager { get; set; }
 
     private async Task HandleLoginAsync()
         {
+        
             var url = $"http://localhost:5052/api/Utilizadores/login?username={Username}&password={Password}";
 
             using var client = new HttpClient();

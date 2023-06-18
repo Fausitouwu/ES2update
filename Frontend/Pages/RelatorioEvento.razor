@@ -1,4 +1,4 @@
-﻿@page "/PesquisarEventos"
+﻿@page "/RelatorioEvento"
 
 @using System.Collections.Generic
 
@@ -21,7 +21,8 @@
         <ul>
             @foreach (var evento in eventos)
             {
-                <li>@evento.Nome - @evento.Local</li>
+                <li>@evento.Capacidade
+                    @evento.Preco</li>
             }
         </ul>
     }
@@ -47,15 +48,9 @@
 
     public class Evento
     {
-        public int Id { get; set; }
-        public string? Nome { get; set; }
-        public DateOnly? Data { get; set; }
-        public TimeOnly? Hora { get; set; }
-        public string? Local { get; set; }
-        public string? Descricao { get; set; }
         public int? Capacidade { get; set; }
         public decimal? Preco { get; set; }
-        public int? Idutilizador { get; set; }
+       
     }
 
     [Inject]

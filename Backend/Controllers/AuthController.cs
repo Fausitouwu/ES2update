@@ -55,7 +55,7 @@ namespace Backend.Controllers
             _context.TipoUtilizadors.Add(tipo_utilizador);
             await _context.SaveChangesAsync();
 
-            var utilizador = new Utilizador
+            var utilizador = new BusinessLogic.Entities.Utilizador
             {
                 Nome = nome,
                 Senha = senha,
