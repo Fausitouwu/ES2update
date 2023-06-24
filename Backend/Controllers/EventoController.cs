@@ -154,6 +154,21 @@ namespace Backend.Controllers
 
             return query.ToList();
         }
+        
+        [HttpGet("searchCategoria")]
+        public IEnumerable<Categoriasevento> SearchCategoria(string pesquisa)
+        {
+            IQueryable<Categoriasevento> query = _context.Categoriaseventos;
+
+            if (!string.IsNullOrEmpty(pesquisa))
+            {
+                query = query.Where(e =>
+                    e.Nome.ToLower().Contains(pesquisa.ToLower())
+                );
+            }
+
+            return query.ToList();
+        }
 
         [HttpGet("get")]
         public IEnumerable<Evento> GetMyEventos(int idutilizador, int idevento)

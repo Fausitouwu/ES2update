@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7v+3CbjMQKfaLDEd5VNbshZSyotj8wgYtMtVCJ+3fjRGzMNcTtsuG1TUkP9sRenOWfkcrvaUTGZxwUlsu1dtug==",
+  "dgSpecHash": "3wyOoq/4w1xngHhrxvKKHq7gZlRSljRvIu6SANhXtKkp9tkrhyJ8rJ1pfZDk28FDnPzS6nfreAokolphdiJkcg==",
   "success": true,
   "projectFilePath": "C:\\Users\\José Faus\\Desktop\\ES2update\\Frontend\\Frontend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\José Faus\\.nuget\\packages\\blazored.localstorage\\4.3.0\\blazored.localstorage.4.3.0.nupkg.sha512",
     "C:\\Users\\José Faus\\.nuget\\packages\\database\\2.5.0\\database.2.5.0.nupkg.sha512",
     "C:\\Users\\José Faus\\.nuget\\packages\\gradient\\0.15.7.2\\gradient.0.15.7.2.nupkg.sha512",
     "C:\\Users\\José Faus\\.nuget\\packages\\gradient.runtime\\0.3.2\\gradient.runtime.0.3.2.nupkg.sha512",
@@ -205,7 +206,7 @@
     "C:\\Users\\José Faus\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\José Faus\\.nuget\\packages\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\José Faus\\.nuget\\packages\\whichpython\\0.3.0\\whichpython.0.3.0.nupkg.sha512",
-    "C:\\Users\\José Faus\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.3\\microsoft.netcore.app.runtime.mono.browser-wasm.7.0.3.nupkg.sha512"
+    "C:\\Users\\José Faus\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.7\\microsoft.netcore.app.runtime.mono.browser-wasm.7.0.7.nupkg.sha512"
   ],
   "logs": [
     {

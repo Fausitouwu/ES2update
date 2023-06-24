@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Blazored.LocalStorage" Version="4.3.0" />
         <PackageReference Include="Database" Version="2.5.0" />
         <PackageReference Include="Gradient" Version="0.15.7.2" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.3" />
@@ -19,9 +20,6 @@
     <ItemGroup>
       <Content Remove="Pages\sair.razor" />
       <Content Remove="Pages\definicoes.razor" />
-    </ItemGroup>
-
-    <ItemGroup>
     </ItemGroup>
 
 </Project>

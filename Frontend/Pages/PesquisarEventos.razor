@@ -2,17 +2,22 @@
 
 @using System.Collections.Generic
 
-<h3>Search Event</h3>
+<h3>Pesquisa de Eventos</h3>
 
 <div class="search-event-container">
     <div class="form-group">
-        <label for="search">Search:</label>
+        <label for="search">Pesquisar:</label>
         <input id="search" class="form-control" @bind="SearchText" />
     </div>
 
     <div class="form-group">
-        <button class="btn btn-primary" @onclick="SearchEventoAsync">Search</button>
+        <button class="btn btn-primary" @onclick="SearchEventoAsync">Pesquisar Eventos</button>
+        <button class="btn btn-primary" @onclick="SearchCategoriaAsync">Pesquisar Categorias</button>
     </div>
+    
+    
+    
+    
 
     @if (eventos != null && eventos.Any())
     {
@@ -33,6 +38,27 @@
     {
         <p>No events found.</p>
     }
+    
+       @if (categoriaEventos != null && categoriaEventos.Any())
+        {
+            <h4>Category Search Results:</h4>
+    
+            <ul>
+                @foreach (var categoria in categoriaEventos)
+                {
+                    <li>@categoria.Nome</li>
+                }
+            </ul>
+        }
+        else if (isSearching)
+        {
+            <p>Loading categories...</p>
+        }
+        else if (searched)
+        {
+            <p>No categories found.</p>
+        }
+    
 </div>
 
 <style>
@@ -42,6 +68,7 @@
 @code {
     private string SearchText { get; set; }
     private List<Evento> eventos;
+    private List<Categoriasevento> categoriaEventos;
     private bool isSearching;
     private bool searched;
 
@@ -58,6 +85,12 @@
         public int? Idutilizador { get; set; }
     }
 
+    public class Categoriasevento
+    {
+        public string? Nome { get; set; }
+        
+    }
+
     [Inject]
     private HttpClient httpClient { get; set; }
 
@@ -68,6 +101,18 @@
 
         var url = $"http://localhost:5052/api/Eventos/search?search={SearchText}";
         eventos = await httpClient.GetFromJsonAsync<List<Evento>>(url);
+
+        isSearching = false;
+        searched = true;
+    }
+    
+    private async Task SearchCategoriaAsync()
+    {
+        isSearching = true;
+        searched = false;
+
+        var url = $"http://localhost:5052/api/Eventos/searchCategoria?pesquisa={SearchText}";
+        categoriaEventos = await httpClient.GetFromJsonAsync<List<Categoriasevento>>(url);
 
         isSearching = false;
         searched = true;

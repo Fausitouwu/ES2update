@@ -1,4 +1,6 @@
 ﻿@page "/Login"
+@using Blazored.LocalStorage
+@inject ILocalStorageService LocalStorageService
 
 <h3>Login</h3>
 
@@ -105,20 +107,18 @@
 
             if (response.IsSuccessStatusCode)
             {
-        // Authentication successful
+      
                 var result = await response.Content.ReadAsStringAsync();
-        // Handle the successful login response
-        // Redirect to the main menu or perform other actions
+        
                 Console.WriteLine("Success");
                 navigationManager.NavigateTo("/");
             }
             else
             {
-        // Authentication failed
+       
                 var error = await response.Content.ReadAsStringAsync();
                 Console.WriteLine("Error");
-        // Handle the failed login response
-        // Show an error message or perform other actions
+      
             }
         }
 }
